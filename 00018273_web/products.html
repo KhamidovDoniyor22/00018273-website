@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Korzinka - Products</title>
+    <link rel="stylesheet" href="productsstyle.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">Korzinka</div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+    </nav>
+
+    <!-- Products Section -->
+    <section class="products">
+        <h1>Set of Products</h1>
+        <div class="product-grid">
+            <!-- Product Item -->
+            <div class="product-item">
+                <img src="images/Product1.png" alt="Organic Apples">
+                <h3>Organic Apples</h3>
+                <p>18,900 so'm</p>
+                <div class="cart-controls">
+                    <button class="btn add-to-cart">Add to Cart</button>
+                    <div class="quantity-controls">
+                        <button class="minus">-</button>
+                        <span class="quantity">1</span>
+                        <button class="plus">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-item">
+                <img src="images/Product2.png" alt="Nutrilak">
+                <h3>Nutrilak</h3>
+                <p>89,900 so'm</p>
+                <div class="cart-controls">
+                    <button class="btn add-to-cart">Add to Cart</button>
+                    <div class="quantity-controls">
+                        <button class="minus">-</button>
+                        <span class="quantity">1</span>
+                        <button class="plus">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-item">
+                <img src="images/Product3.png" alt="Shampoo H&S">
+                <h3>Shampoo H&S</h3>
+                <p>40,490 so'm</p>
+                <div class="cart-controls">
+                    <button class="btn add-to-cart">Add to Cart</button>
+                    <div class="quantity-controls">
+                        <button class="minus">-</button>
+                        <span class="quantity">1</span>
+                        <button class="plus">+</button>
+                    </div>
+                </div>
+            </div>
+           
+          
+            
+          
+           
+        </div>
+        <div class="main-content">
+            <!-- Your main content here -->
+        </div>
+       
+    </section>
+    
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const productItems = document.querySelectorAll(".product-item");
+
+            productItems.forEach(item => {
+                const addToCartButton = item.querySelector(".add-to-cart");
+                const quantityControls = item.querySelector(".quantity-controls");
+                const minusButton = item.querySelector(".minus");
+                const plusButton = item.querySelector(".plus");
+                const quantityDisplay = item.querySelector(".quantity");
+
+                let quantity = 1;
+
+                addToCartButton.addEventListener("click", () => {
+                    // Show quantity controls and hide "Add to Cart"
+                    addToCartButton.style.display = "none";
+                    quantityControls.style.display = "flex";
+                });
+
+                minusButton.addEventListener("click", () => {
+                    if (quantity > 1) {
+                        quantity--;
+                        quantityDisplay.textContent = quantity;
+                    } else {
+                        // Revert to "Add to Cart" if quantity reaches 0
+                        quantityControls.style.display = "none";
+                        addToCartButton.style.display = "block";
+                        quantity = 1; // Reset quantity
+                        quantityDisplay.textContent = quantity;
+                    }
+                });
+
+                plusButton.addEventListener("click", () => {
+                    quantity++;
+                    quantityDisplay.textContent = quantity;
+                });
+            });
+        });
+    </script>
+    
+</body>
+</html>
